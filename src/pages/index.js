@@ -15,6 +15,9 @@ import TokenListrik from './TokenListrik';
 import Internet from './Internet';
 import DetailInternet from './DetailInternet';
 import BPJS from './BPJS';
+import Transfer from './Transfer';
+import TransferToBank from './TransferToBank';
+import Security from './Security';
 
 export {
   SplashScreen,
@@ -34,4 +37,7 @@ export {
   Internet,
   DetailInternet,
   BPJS,
+  Transfer,
+  TransferToBank,
+  Security,
 };

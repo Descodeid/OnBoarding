@@ -20,6 +20,9 @@ import {
   Internet,
   DetailInternet,
   BPJS,
+  Transfer,
+  TransferToBank,
+  Security,
 } from '../pages';
 
 const Stack = createStackNavigator();
@@ -37,7 +40,7 @@ const MainApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName="SplashScreen">
+    <Stack.Navigator initialRouteName="Security">
       <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
@@ -103,6 +106,21 @@ const Router = () => {
       <Stack.Screen
         name="BPJS"
         component={BPJS}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Transfer"
+        component={Transfer}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="TransferToBank"
+        component={TransferToBank}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Security"
+        component={Security}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

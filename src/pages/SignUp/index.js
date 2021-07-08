@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   input: {
     fontFamily: 'Poppins-Regular',
-    fontSize: normalize(12),
+    fontSize: normalize(14),
     color: colors.c5,
     borderBottomWidth: 1,
     borderBottomColor: colors.c9,
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   inputPassword: {
     flex: 1,
     fontFamily: 'Poppins-Regular',
-    fontSize: normalize(12),
+    fontSize: normalize(14),
     color: colors.c5,
     borderBottomWidth: 1,
     borderBottomColor: colors.c9,

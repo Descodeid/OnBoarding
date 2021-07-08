@@ -5,6 +5,8 @@ import Header from './Header';
 import ListMenu from './ListMenu';
 import ListProfile from './ListProfile';
 import SlidingUpPanel from './SlidingUpPanel';
+import SecondHeader from './SecondHeader';
+import ListHistory from './ListHistory';
 
 export {
   OnBoardingPagination,
@@ -14,4 +16,6 @@ export {
   ListMenu,
   ListProfile,
   SlidingUpPanel,
+  SecondHeader,
+  ListHistory,
 };

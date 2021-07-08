@@ -1,21 +1,26 @@
 import {BlurView} from '@react-native-community/blur';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
 import DashedLine from 'react-native-dashed-line';
 import normalize from 'react-native-normalize';
-import {Number} from '..';
+import {ListHistory, Number} from '..';
 import {colors} from '../../../utils';
 import {Button, Gap} from '../../atoms';
 
 const SlidingUpPanel = ({
   productName,
   phone,
+  name,
+  bank,
+  accountNumber,
   date,
   price,
   show,
   closePopup,
   type,
 }) => {
+  const navigation = useNavigation();
   return (
     <>
       {show && <BlurView blurType="dark" blurAmount={1} style={styles.blur} />}
@@ -275,6 +280,64 @@ const SlidingUpPanel = ({
             <Gap height={24} />
           </View>
         )}
+
+        {type === 'Transfer' && (
+          <View style={styles.modal}>
+            <View style={styles.center}>
+              <Text style={styles.title}>Konfirmasi Transfer</Text>
+            </View>
+            <Gap height={16} />
+            <Text style={styles.title}>Penerima</Text>
+            <ListHistory
+              type="transferBank"
+              name={name}
+              bank={bank}
+              accountNumber={accountNumber}
+            />
+            <Gap height={16} />
+            <Text style={styles.title}>Sumber dana</Text>
+            <Gap height={4} />
+            <Text style={styles.dana}>
+              Saldo <Text style={styles.danaBlue}>Paypas</Text>
+            </Text>
+            <Gap height={13} />
+            <View style={styles.line} />
+            <Gap height={16} />
+            <Text style={styles.title}>Detail</Text>
+            <Gap height={8} />
+            <View style={styles.row}>
+              <Text style={styles.label}>Nominal Transfer</Text>
+              <Number number={100000} style={styles.value} />
+            </View>
+            <Gap height={8} />
+            <View style={styles.row}>
+              <Text style={styles.label}>Biaya Transfer</Text>
+              <Number number={2500} style={styles.value} />
+            </View>
+            <Gap height={8} />
+            <DashedLine dashLength={15} dashGap={10} dashColor="#8B8B8B" />
+            <Gap height={16} />
+            <View style={styles.row}>
+              <Text style={styles.totalLabel}>Total</Text>
+              <Number number={102500} style={styles.total} />
+            </View>
+            <Gap height={32} />
+            <View style={styles.flexOne}>
+              <Button
+                text="Lanjutkan"
+                fontFamily="Poppins-SemiBold"
+                fontSize={16}
+                borderRadius={12}
+                onPress={() => navigation.navigate('Security')}
+              />
+              <Gap height={16} />
+              <View style={styles.center}>
+                <Text style={styles.cancel}>Batalkan</Text>
+              </View>
+            </View>
+            <Gap height={44} />
+          </View>
+        )}
       </Modal>
     </>
   );
@@ -344,5 +407,25 @@ const styles = StyleSheet.create({
   },
   flexOne: {
     flex: 1,
+  },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  dana: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: normalize(14),
+    color: colors.c6,
+    marginLeft: normalize(8),
+  },
+  danaBlue: {
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: normalize(14),
+    color: colors.c1,
+  },
+  cancel: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: normalize(16),
+    color: colors.c4,
   },
 });

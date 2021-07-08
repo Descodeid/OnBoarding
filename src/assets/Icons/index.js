@@ -28,6 +28,9 @@ import IcPaper from './IcPaper.svg';
 import IcSignOut from './IcLogout.svg';
 import IcCloseCircle from './IcCloseCircle.svg';
 import IcPhoneBook from './IcPhoneBook.svg';
+import IcArrowLeftWhite from './IcArrowLeftWhite';
+import IcBankTransfer from './IcBankTransfer.svg';
+import IcPaypasTransfer from './IcPaypasTransfer.svg';
 
 export {
   IcArrowLeft,
@@ -60,4 +63,7 @@ export {
   IcSignOut,
   IcCloseCircle,
   IcPhoneBook,
+  IcArrowLeftWhite,
+  IcBankTransfer,
+  IcPaypasTransfer,
 };

@@ -22,11 +22,6 @@ const OTP = ({navigation}) => {
   const pin3reff = React.useRef();
   const pin4reff = React.useRef();
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      navigation.replace('MainApp');
-    });
-  }, []);
   return (
     <View style={styles.page}>
       <View style={styles.header}>
@@ -101,6 +96,7 @@ const OTP = ({navigation}) => {
               pin3reff.current.focus();
             }
           }}
+          onSubmitEditing={() => navigation.navigate('MainApp')}
         />
       </View>
       <Gap height={80} />
