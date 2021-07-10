@@ -31,6 +31,8 @@ import IcPhoneBook from './IcPhoneBook.svg';
 import IcArrowLeftWhite from './IcArrowLeftWhite';
 import IcBankTransfer from './IcBankTransfer.svg';
 import IcPaypasTransfer from './IcPaypasTransfer.svg';
+import IcChecklist from './IcChecklist.svg';
+import IcSuccess from './IcSuccess.svg';
 
 export {
   IcArrowLeft,
@@ -66,4 +68,6 @@ export {
   IcArrowLeftWhite,
   IcBankTransfer,
   IcPaypasTransfer,
+  IcChecklist,
+  IcSuccess,
 };

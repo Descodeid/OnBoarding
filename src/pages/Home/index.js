@@ -58,11 +58,14 @@ const Home = ({navigation}) => {
             <Number number={1500000} style={styles.amount} />
           </View>
           <View style={styles.row}>
-            <View style={styles.center}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={styles.center}
+              onPress={() => navigation.navigate('TopUp')}>
               <IcTopUp />
               <Gap height={8} />
               <Text style={styles.text}>Top Up</Text>
-            </View>
+            </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.7}
               style={styles.center}

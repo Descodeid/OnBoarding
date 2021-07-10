@@ -15,6 +15,7 @@ const SlidingUpPanel = ({
   bank,
   accountNumber,
   date,
+  nominal,
   price,
   show,
   closePopup,
@@ -307,7 +308,7 @@ const SlidingUpPanel = ({
             <Gap height={8} />
             <View style={styles.row}>
               <Text style={styles.label}>Nominal Transfer</Text>
-              <Number number={100000} style={styles.value} />
+              <Number number={nominal} style={styles.value} />
             </View>
             <Gap height={8} />
             <View style={styles.row}>
@@ -319,7 +320,60 @@ const SlidingUpPanel = ({
             <Gap height={16} />
             <View style={styles.row}>
               <Text style={styles.totalLabel}>Total</Text>
-              <Number number={102500} style={styles.total} />
+              <Number number={nominal + 2500} style={styles.total} />
+            </View>
+            <Gap height={32} />
+            <View style={styles.flexOne}>
+              <Button
+                text="Lanjutkan"
+                fontFamily="Poppins-SemiBold"
+                fontSize={16}
+                borderRadius={12}
+                onPress={() => navigation.navigate('Security')}
+              />
+              <Gap height={16} />
+              <View style={styles.center}>
+                <Text style={styles.cancel}>Batalkan</Text>
+              </View>
+            </View>
+            <Gap height={44} />
+          </View>
+        )}
+
+        {type === 'TransferUser' && (
+          <View style={styles.modal}>
+            <View style={styles.center}>
+              <Text style={styles.title}>Konfirmasi Transfer</Text>
+            </View>
+            <Gap height={16} />
+            <Text style={styles.title}>Penerima</Text>
+            <ListHistory type="transferPaypas" phone={phone} />
+            <Gap height={16} />
+            <Text style={styles.title}>Sumber dana</Text>
+            <Gap height={4} />
+            <Text style={styles.dana}>
+              Saldo <Text style={styles.danaBlue}>Paypas</Text>
+            </Text>
+            <Gap height={13} />
+            <View style={styles.line} />
+            <Gap height={16} />
+            <Text style={styles.title}>Detail</Text>
+            <Gap height={8} />
+            <View style={styles.row}>
+              <Text style={styles.label}>Nominal Transfer</Text>
+              <Number number={nominal} style={styles.value} />
+            </View>
+            <Gap height={8} />
+            <View style={styles.row}>
+              <Text style={styles.label}>Biaya Transfer</Text>
+              <Number number={2500} style={styles.value} />
+            </View>
+            <Gap height={8} />
+            <DashedLine dashLength={15} dashGap={10} dashColor="#8B8B8B" />
+            <Gap height={16} />
+            <View style={styles.row}>
+              <Text style={styles.totalLabel}>Total</Text>
+              <Number number={nominal + 2500} style={styles.total} />
             </View>
             <Gap height={32} />
             <View style={styles.flexOne}>

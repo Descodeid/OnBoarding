@@ -10,13 +10,16 @@ const Transfer = ({navigation}) => {
     <View style={styles.page}>
       <SecondHeader text="Transfer" />
       <View style={styles.container}>
-        <View style={styles.card}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.card}
+          onPress={() => navigation.navigate('TransferToUser')}>
           <ILWallet />
           <Gap height={16} />
           <Text style={styles.label}>
             Ke sesama <Text style={styles.labelBlue}>Paypas</Text>
           </Text>
-        </View>
+        </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.7}
           style={styles.card}

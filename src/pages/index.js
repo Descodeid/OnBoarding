@@ -18,6 +18,10 @@ import BPJS from './BPJS';
 import Transfer from './Transfer';
 import TransferToBank from './TransferToBank';
 import Security from './Security';
+import TopUp from './TopUp';
+import MetodePembayaran from './MetodePembayaran';
+import TopUpSuccess from './TopUpSuccess';
+import TransferToUser from './TransferToUser';
 
 export {
   SplashScreen,
@@ -40,4 +44,8 @@ export {
   Transfer,
   TransferToBank,
   Security,
+  TopUp,
+  MetodePembayaran,
+  TopUpSuccess,
+  TransferToUser,
 };

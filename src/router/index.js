@@ -23,6 +23,10 @@ import {
   Transfer,
   TransferToBank,
   Security,
+  TopUp,
+  MetodePembayaran,
+  TopUpSuccess,
+  TransferToUser,
 } from '../pages';
 
 const Stack = createStackNavigator();
@@ -40,7 +44,7 @@ const MainApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName="Security">
+    <Stack.Navigator initialRouteName="MainApp">
       <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
@@ -119,8 +123,28 @@ const Router = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
+        name="TransferToUser"
+        component={TransferToUser}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
         name="Security"
         component={Security}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="TopUp"
+        component={TopUp}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MetodePembayaran"
+        component={MetodePembayaran}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="TopUpSuccess"
+        component={TopUpSuccess}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

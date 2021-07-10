@@ -7,7 +7,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
+import CurrencyInput from 'react-native-currency-input';
 import normalize from 'react-native-normalize';
 import {Logo} from '../../assets';
 import {
@@ -18,10 +18,9 @@ import {
   SlidingUpPanel,
 } from '../../components';
 import {colors} from '../../utils';
-import CurrencyInput from 'react-native-currency-input';
 
-const TransferToBank = () => {
-  const [accountNumber, setAccountNumber] = React.useState('');
+const TransferToUser = () => {
+  const [phone, setPhone] = React.useState('');
   const [note, setNote] = React.useState('');
   const [nominal, setNominal] = React.useState('');
 
@@ -29,39 +28,18 @@ const TransferToBank = () => {
   const close = () => {
     setIsShow(false);
   };
-
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(null);
-  const [items, setItems] = React.useState([
-    {label: 'BCA', value: 'BCA'},
-    {label: 'BRI', value: 'BRI'},
-  ]);
   return (
     <View style={styles.page}>
       <SecondHeader text="Transfer" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <TextInput
-            placeholder="No Rekening"
+            placeholder="Masukkan nomor ponsel"
             placeholderTextColor={colors.c4}
             style={styles.input}
-            value={accountNumber}
-            onChangeText={item => setAccountNumber(item)}
+            value={phone}
+            onChangeText={item => setPhone(item)}
             keyboardType="numeric"
-          />
-          <DropDownPicker
-            open={open}
-            value={value}
-            items={items}
-            setOpen={setOpen}
-            setValue={setValue}
-            setItems={setItems}
-            style={styles.picker}
-            placeholder="Nama Bank"
-            textStyle={styles.textPicker}
-            placeholderStyle={styles.placeholderStyle}
-            dropDownContainerStyle={styles.dropDownContainerStyle}
-            listMode="SCROLLVIEW"
           />
           <TextInput
             placeholder="Catatan"
@@ -100,7 +78,7 @@ const TransferToBank = () => {
           />
           <Gap height={130} />
           <View style={styles.button}>
-            {accountNumber !== '' && value !== null && nominal !== '' ? (
+            {phone !== '' && nominal !== '' ? (
               <Button
                 text="Lanjutkan"
                 fontFamily="Poppins-SemiBold"
@@ -125,18 +103,16 @@ const TransferToBank = () => {
       <SlidingUpPanel
         show={isShow}
         closePopup={close}
-        type="Transfer"
-        date={value}
+        type="TransferUser"
         name="Ryan Aprianto"
-        bank={value}
-        accountNumber={accountNumber}
+        phone={phone}
         nominal={nominal}
       />
     </View>
   );
 };
 
-export default TransferToBank;
+export default TransferToUser;
 
 const styles = StyleSheet.create({
   page: {

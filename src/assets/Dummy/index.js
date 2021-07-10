@@ -13,6 +13,14 @@ import Indihome from './Indihome.svg';
 import CBN from './CBN.svg';
 import MNC from './MNC.svg';
 import LogoBPJS from './BPJS.svg';
+import Maybank from './Maybank.png';
+import PermataBank from './PermataBank.png';
+import BNI from './BNI.png';
+import BRI from './BRI.png';
+import Mandiri from './Mandiri.png';
+import BCA from './BCA.png';
+import Alfamart from './Alfamart.png';
+import Background from './Background.png';
 
 export {
   Logo,
@@ -30,4 +38,12 @@ export {
   CBN,
   MNC,
   LogoBPJS,
+  Maybank,
+  PermataBank,
+  BNI,
+  Mandiri,
+  BRI,
+  BCA,
+  Alfamart,
+  Background,
 };
