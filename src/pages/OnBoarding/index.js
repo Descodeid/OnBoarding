@@ -44,8 +44,7 @@ const OnBoarding = ({navigation}) => {
           renderItem={({item}) => (
             <View style={[styles.content, {width}]}>
               <Gap height={124} />
-              <Image source={item.image} />
-              <Gap height={46} />
+              <Image source={item.image} style={{width: '100%'}} />
               <OnBoardingPagination data={Sliders} scrollX={scrollX} />
               <Gap height={12} />
               <View style={styles.card}>
@@ -70,6 +69,7 @@ const OnBoarding = ({navigation}) => {
                   )}
                 </View>
               </View>
+              <Gap height={24} />
             </View>
           )}
           horizontal
