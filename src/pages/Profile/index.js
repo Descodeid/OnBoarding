@@ -9,10 +9,14 @@ import {
   IcSignOut,
   User,
 } from '../../assets';
-import {Gap, ListProfile} from '../../components';
+import {Gap, ListProfile, SlidingUpPanel} from '../../components';
 import normalize from 'react-native-normalize';
 
 const Profile = ({navigation}) => {
+  const [isShow, setIsShow] = React.useState(false);
+  const close = () => {
+    setIsShow(false);
+  };
   return (
     <View style={styles.page}>
       <Image source={BackgroundProfile} style={styles.background} />
@@ -29,11 +33,23 @@ const Profile = ({navigation}) => {
       <ListProfile
         text="Edit Profile"
         icon={<IcEdit />}
-        onPress={() => navigation.replace('EditProfile')}
+        onPress={() => navigation.navigate('EditProfile')}
       />
-      <ListProfile text="Ubah Password" icon={<IcLockDark />} />
-      <ListProfile text="Kebijakan Privasi" icon={<IcPaper />} />
-      <ListProfile text="Aturan Pengguna" icon={<IcPaper />} />
+      <ListProfile
+        text="Ubah Password"
+        icon={<IcLockDark />}
+        onPress={() => setIsShow(!isShow)}
+      />
+      <ListProfile
+        text="Kebijakan Privasi"
+        icon={<IcPaper />}
+        onPress={() => navigation.navigate('Privacy')}
+      />
+      <ListProfile
+        text="Tentang Perusahaan"
+        icon={<IcPaper />}
+        onPress={() => navigation.navigate('Company')}
+      />
       <ListProfile
         text="Keluar"
         icon={<IcSignOut />}
@@ -42,6 +58,7 @@ const Profile = ({navigation}) => {
       <View style={styles.footer}>
         <Text style={styles.version}>Versi 1.0</Text>
       </View>
+      <SlidingUpPanel show={isShow} closePopup={close} type="Password" />
     </View>
   );
 };

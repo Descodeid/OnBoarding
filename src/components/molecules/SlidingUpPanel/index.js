@@ -1,12 +1,21 @@
 import {BlurView} from '@react-native-community/blur';
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  Modal,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import DashedLine from 'react-native-dashed-line';
 import normalize from 'react-native-normalize';
 import {ListHistory, Number} from '..';
-import {IcMerchantBlue} from '../../../assets';
-import {colors} from '../../../utils';
+import {IcHide, IcMerchantBlue, IcShow} from '../../../assets';
+import {colors, useForm} from '../../../utils';
 import {Button, Gap} from '../../atoms';
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 import Toast, {BaseToast} from 'react-native-toast-message';
@@ -99,6 +108,11 @@ const SlidingUpPanel = ({
       </View>
     ),
   };
+
+  const [isHidden, setIsHidden] = React.useState(true);
+  const [form, setForm] = useForm({
+    password: '',
+  });
   return (
     <>
       <Toast config={toastConfig} ref={ref => Toast.setRef(ref)} />
@@ -500,6 +514,84 @@ const SlidingUpPanel = ({
             <Gap height={24} />
           </View>
         )}
+        {type === 'Password' && (
+          <View style={styles.modal}>
+            <View style={styles.center}>
+              <Text style={styles.title}>Ubah kata sandi</Text>
+            </View>
+            <Gap height={16} />
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Kata sandi lama"
+                style={styles.input}
+                placeholderTextColor={colors.c4}
+                secureTextEntry={isHidden}
+                value={form.password}
+                onChangeText={value => setForm('password', value)}
+              />
+              <Gap width={16} />
+              <TouchableOpacity
+                style={styles.hide}
+                onPress={() => setIsHidden(!isHidden)}>
+                {isHidden ? (
+                  <Image source={IcShow} style={styles.icon} />
+                ) : (
+                  <Image source={IcHide} style={styles.icon} />
+                )}
+              </TouchableOpacity>
+            </View>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Kata sandi baru"
+                style={styles.input}
+                placeholderTextColor={colors.c4}
+                secureTextEntry={isHidden}
+                value={form.password}
+                onChangeText={value => setForm('password', value)}
+              />
+              <Gap width={16} />
+              <TouchableOpacity
+                style={styles.hide}
+                onPress={() => setIsHidden(!isHidden)}>
+                {isHidden ? (
+                  <Image source={IcShow} style={styles.icon} />
+                ) : (
+                  <Image source={IcHide} style={styles.icon} />
+                )}
+              </TouchableOpacity>
+            </View>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Konfirmasi kata sandi"
+                style={styles.input}
+                placeholderTextColor={colors.c4}
+                secureTextEntry={isHidden}
+                value={form.password}
+                onChangeText={value => setForm('password', value)}
+              />
+              <Gap width={16} />
+              <TouchableOpacity
+                style={styles.hide}
+                onPress={() => setIsHidden(!isHidden)}>
+                {isHidden ? (
+                  <Image source={IcShow} style={styles.icon} />
+                ) : (
+                  <Image source={IcHide} style={styles.icon} />
+                )}
+              </TouchableOpacity>
+            </View>
+            <Gap height={16} />
+            <View style={styles.button}>
+              <Button
+                text="Ubah kata sandi"
+                borderRadius={12}
+                fontFamily="Poppins-SemiBold"
+                fontSize={16}
+              />
+            </View>
+            <Gap height={24} />
+          </View>
+        )}
       </Modal>
     </>
   );
@@ -633,5 +725,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: normalize(15),
     borderRadius: normalize(10),
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: normalize(24),
+    marginBottom: normalize(16),
+    borderWidth: 1,
+    borderColor: colors.c9,
+    borderRadius: normalize(10),
+  },
+  input: {
+    flex: 1,
+    fontFamily: 'Poppins-Regular',
+    fontSize: normalize(14),
+    color: colors.c5,
+    paddingBottom: normalize(12),
+  },
+  icon: {
+    width: normalize(24),
+    height: normalize(24),
+  },
+  button: {
+    paddingHorizontal: normalize(42),
   },
 });

@@ -26,6 +26,8 @@ import History from './History';
 import InfoToko from './InfoToko';
 import PaymentSuccess from './PaymentSuccess';
 import EditProfile from './EditProfile';
+import Privacy from './Privacy';
+import Company from './Company';
 
 export {
   SplashScreen,
@@ -56,4 +58,6 @@ export {
   InfoToko,
   PaymentSuccess,
   EditProfile,
+  Privacy,
+  Company,
 };
