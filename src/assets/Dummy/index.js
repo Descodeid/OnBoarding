@@ -21,6 +21,7 @@ import Mandiri from './Mandiri.png';
 import BCA from './BCA.png';
 import Alfamart from './Alfamart.png';
 import Background from './Background.png';
+import BackgroundMerchant from './BackgroundMerchant.png';
 
 export {
   Logo,
@@ -46,4 +47,5 @@ export {
   BCA,
   Alfamart,
   Background,
+  BackgroundMerchant,
 };

@@ -33,6 +33,8 @@ import IcBankTransfer from './IcBankTransfer.svg';
 import IcPaypasTransfer from './IcPaypasTransfer.svg';
 import IcChecklist from './IcChecklist.svg';
 import IcSuccess from './IcSuccess.svg';
+import IcMerchant from './IcMerchant.svg';
+import IcMerchantBlue from './IcMerchantBlue.svg';
 
 export {
   IcArrowLeft,
@@ -70,4 +72,6 @@ export {
   IcPaypasTransfer,
   IcChecklist,
   IcSuccess,
+  IcMerchant,
+  IcMerchantBlue,
 };

@@ -5,6 +5,7 @@ import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
 import DashedLine from 'react-native-dashed-line';
 import normalize from 'react-native-normalize';
 import {ListHistory, Number} from '..';
+import {IcMerchantBlue} from '../../../assets';
 import {colors} from '../../../utils';
 import {Button, Gap} from '../../atoms';
 
@@ -392,6 +393,63 @@ const SlidingUpPanel = ({
             <Gap height={44} />
           </View>
         )}
+
+        {type === 'QRIS' && (
+          <View style={styles.modal}>
+            <View style={styles.center}>
+              <Text style={styles.title}>Konfirmasi QRIS</Text>
+            </View>
+            <Gap height={16} />
+            <Text style={styles.title}>Penerima</Text>
+            <View style={styles.merchantContainer}>
+              <IcMerchantBlue />
+              <Gap width={16} />
+              <Text style={styles.merchant}>Detacell Infomedia</Text>
+            </View>
+            <Gap height={16} />
+            <Text style={styles.title}>Sumber dana</Text>
+            <Gap height={4} />
+            <Text style={styles.dana}>
+              Saldo <Text style={styles.danaBlue}>Paypas</Text>
+            </Text>
+            <Gap height={13} />
+            <View style={styles.line} />
+            <Gap height={16} />
+            <Text style={styles.title}>Detail</Text>
+            <Gap height={8} />
+            <View style={styles.row}>
+              <Text style={styles.label}>Nominal Pembayaran</Text>
+              <Number number={nominal} style={styles.value} />
+            </View>
+            <Gap height={8} />
+            <View style={styles.row}>
+              <Text style={styles.label}>Biaya Transaksi</Text>
+              <Number number={2500} style={styles.value} />
+            </View>
+            <Gap height={8} />
+            <DashedLine dashLength={15} dashGap={10} dashColor="#8B8B8B" />
+            <Gap height={16} />
+            <View style={styles.row}>
+              <Text style={styles.totalLabel}>Total</Text>
+              <Number number={nominal + 2500} style={styles.total} />
+            </View>
+            <Gap height={32} />
+            <View style={styles.flexOne}>
+              <Button
+                text="Lanjutkan"
+                fontFamily="Poppins-SemiBold"
+                fontSize={16}
+                borderRadius={12}
+                onPress={() => navigation.navigate('PaymentSuccess')}
+              />
+              <Gap height={16} />
+              <View style={styles.center}>
+                <Text style={styles.cancel}>Batalkan</Text>
+              </View>
+            </View>
+            <Gap height={44} />
+          </View>
+        )}
       </Modal>
     </>
   );
@@ -481,5 +539,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     fontSize: normalize(16),
     color: colors.c4,
+  },
+  merchantContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingBottom: normalize(12),
+    borderBottomWidth: 0.5,
+    borderBottomColor: colors.c9,
+  },
+  merchant: {
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: normalize(14),
+    color: colors.c6,
   },
 });

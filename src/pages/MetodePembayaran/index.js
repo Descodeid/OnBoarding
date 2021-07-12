@@ -3,7 +3,6 @@ import {
   Image,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -18,7 +17,7 @@ import {
   Maybank,
   PermataBank,
 } from '../../assets';
-import {Button, Gap, SecondHeader} from '../../components';
+import {Button, SecondHeader} from '../../components';
 import {colors} from '../../utils';
 
 const data = [
@@ -44,8 +43,6 @@ const MetodePembayaran = ({navigation}) => {
             paddingHorizontal: normalize(15),
             paddingVertical: normalize(24),
           }}>
-          <Text style={styles.label}>Metode Pembayaran</Text>
-          <Gap height={16} />
           {data.map((item, index) => {
             return (
               <TouchableOpacity

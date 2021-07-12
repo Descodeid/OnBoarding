@@ -74,11 +74,14 @@ const Home = ({navigation}) => {
               <Gap height={8} />
               <Text style={styles.text}>Transfer</Text>
             </TouchableOpacity>
-            <View style={styles.center}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={styles.center}
+              onPress={() => navigation.navigate('History')}>
               <IcHistory />
               <Gap height={8} />
               <Text style={styles.text}>History</Text>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
         {/* Main Menu */}

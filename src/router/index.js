@@ -27,6 +27,9 @@ import {
   MetodePembayaran,
   TopUpSuccess,
   TransferToUser,
+  History,
+  InfoToko,
+  PaymentSuccess,
 } from '../pages';
 
 const Stack = createStackNavigator();
@@ -36,7 +39,15 @@ const MainApp = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigation {...props} />}>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="QRIS" component={QRIS} />
+      <Tab.Screen
+        name="QRIS"
+        component={QRIS}
+        options={() => {
+          return {
+            tabBarVisible: false,
+          };
+        }}
+      />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
@@ -44,7 +55,7 @@ const MainApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator initialRouteName="InfoToko">
       <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
@@ -145,6 +156,21 @@ const Router = () => {
       <Stack.Screen
         name="TopUpSuccess"
         component={TopUpSuccess}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="History"
+        component={History}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="InfoToko"
+        component={InfoToko}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PaymentSuccess"
+        component={PaymentSuccess}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

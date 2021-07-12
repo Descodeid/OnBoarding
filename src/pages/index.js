@@ -22,6 +22,9 @@ import TopUp from './TopUp';
 import MetodePembayaran from './MetodePembayaran';
 import TopUpSuccess from './TopUpSuccess';
 import TransferToUser from './TransferToUser';
+import History from './History';
+import InfoToko from './InfoToko';
+import PaymentSuccess from './PaymentSuccess';
 
 export {
   SplashScreen,
@@ -48,4 +51,7 @@ export {
   MetodePembayaran,
   TopUpSuccess,
   TransferToUser,
+  History,
+  InfoToko,
+  PaymentSuccess,
 };

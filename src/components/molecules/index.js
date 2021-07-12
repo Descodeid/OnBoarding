@@ -7,6 +7,7 @@ import ListProfile from './ListProfile';
 import SlidingUpPanel from './SlidingUpPanel';
 import SecondHeader from './SecondHeader';
 import ListHistory from './ListHistory';
+import TabSection from './TabSection';
 
 export {
   OnBoardingPagination,
@@ -18,4 +19,5 @@ export {
   SlidingUpPanel,
   SecondHeader,
   ListHistory,
+  TabSection,
 };
