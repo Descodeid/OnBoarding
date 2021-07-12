@@ -25,6 +25,7 @@ import TransferToUser from './TransferToUser';
 import History from './History';
 import InfoToko from './InfoToko';
 import PaymentSuccess from './PaymentSuccess';
+import EditProfile from './EditProfile';
 
 export {
   SplashScreen,
@@ -54,4 +55,5 @@ export {
   History,
   InfoToko,
   PaymentSuccess,
+  EditProfile,
 };

@@ -30,6 +30,7 @@ import {
   History,
   InfoToko,
   PaymentSuccess,
+  EditProfile,
 } from '../pages';
 
 const Stack = createStackNavigator();
@@ -55,7 +56,7 @@ const MainApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName="InfoToko">
+    <Stack.Navigator initialRouteName="EditProfile">
       <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
@@ -171,6 +172,11 @@ const Router = () => {
       <Stack.Screen
         name="PaymentSuccess"
         component={PaymentSuccess}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

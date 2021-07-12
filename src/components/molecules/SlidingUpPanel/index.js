@@ -8,6 +8,8 @@ import {ListHistory, Number} from '..';
 import {IcMerchantBlue} from '../../../assets';
 import {colors} from '../../../utils';
 import {Button, Gap} from '../../atoms';
+import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
+import Toast, {BaseToast} from 'react-native-toast-message';
 
 const SlidingUpPanel = ({
   productName,
@@ -23,10 +25,84 @@ const SlidingUpPanel = ({
   type,
 }) => {
   const navigation = useNavigation();
+
+  const takePhoto = () => {
+    launchCamera(
+      {
+        quality: 0.5,
+        maxWidth: 200,
+        maxHeight: 200,
+      },
+      response => {
+        if (response.didCancel || response.error) {
+          closePopup();
+          Toast.show({
+            text1: 'Anda tidak memilih photo',
+            type: 'errorAlert',
+            position: 'bottom',
+          });
+        } else {
+          // closePopup();
+          // const source = {uri: response.uri};
+          // dispatch({type: 'SET_PHOTO', source});
+        }
+      },
+    );
+  };
+
+  const chooseFromLibrary = () => {
+    launchImageLibrary(
+      {
+        quality: 0.5,
+        maxWidth: 200,
+        maxHeight: 200,
+      },
+      response => {
+        if (response.didCancel || response.error) {
+          closePopup();
+          Toast.show({
+            text1: 'Anda tidak memilih photo',
+            type: 'errorAlert',
+            position: 'bottom',
+          });
+        } else {
+          closePopup();
+          // const source = {uri: response.uri};
+          // dispatch({type: 'SET_PHOTO', source});
+        }
+      },
+    );
+  };
+
+  const toastConfig = {
+    success: ({text1, props, ...rest}) => (
+      <BaseToast
+        {...rest}
+        style={styles.leftSuccess}
+        contentContainerStyle={styles.padding}
+        text1Style={styles.textAlert}
+        text1={text1}
+        text2={props.uuid}
+      />
+    ),
+
+    errorAlert: ({text1, props, ...rest}) => (
+      <View style={styles.alertError}>
+        <Gap width={8} />
+        <Text style={styles.textAlert}>{text1}</Text>
+      </View>
+    ),
+    successAlert: ({text1, props, ...rest}) => (
+      <View style={styles.alertSuccess}>
+        <Gap width={8} />
+        <Text style={styles.textAlert}>{text1}</Text>
+      </View>
+    ),
+  };
   return (
     <>
+      <Toast config={toastConfig} ref={ref => Toast.setRef(ref)} />
       {show && <BlurView blurType="dark" blurAmount={1} style={styles.blur} />}
-
       <Modal
         animationType="slide"
         transparent={true}
@@ -341,59 +417,6 @@ const SlidingUpPanel = ({
           </View>
         )}
 
-        {type === 'TransferUser' && (
-          <View style={styles.modal}>
-            <View style={styles.center}>
-              <Text style={styles.title}>Konfirmasi Transfer</Text>
-            </View>
-            <Gap height={16} />
-            <Text style={styles.title}>Penerima</Text>
-            <ListHistory type="transferPaypas" phone={phone} />
-            <Gap height={16} />
-            <Text style={styles.title}>Sumber dana</Text>
-            <Gap height={4} />
-            <Text style={styles.dana}>
-              Saldo <Text style={styles.danaBlue}>Paypas</Text>
-            </Text>
-            <Gap height={13} />
-            <View style={styles.line} />
-            <Gap height={16} />
-            <Text style={styles.title}>Detail</Text>
-            <Gap height={8} />
-            <View style={styles.row}>
-              <Text style={styles.label}>Nominal Transfer</Text>
-              <Number number={nominal} style={styles.value} />
-            </View>
-            <Gap height={8} />
-            <View style={styles.row}>
-              <Text style={styles.label}>Biaya Transfer</Text>
-              <Number number={2500} style={styles.value} />
-            </View>
-            <Gap height={8} />
-            <DashedLine dashLength={15} dashGap={10} dashColor="#8B8B8B" />
-            <Gap height={16} />
-            <View style={styles.row}>
-              <Text style={styles.totalLabel}>Total</Text>
-              <Number number={nominal + 2500} style={styles.total} />
-            </View>
-            <Gap height={32} />
-            <View style={styles.flexOne}>
-              <Button
-                text="Lanjutkan"
-                fontFamily="Poppins-SemiBold"
-                fontSize={16}
-                borderRadius={12}
-                onPress={() => navigation.navigate('Security')}
-              />
-              <Gap height={16} />
-              <View style={styles.center}>
-                <Text style={styles.cancel}>Batalkan</Text>
-              </View>
-            </View>
-            <Gap height={44} />
-          </View>
-        )}
-
         {type === 'QRIS' && (
           <View style={styles.modal}>
             <View style={styles.center}>
@@ -448,6 +471,33 @@ const SlidingUpPanel = ({
               </View>
             </View>
             <Gap height={44} />
+          </View>
+        )}
+
+        {type === 'Photo' && (
+          <View style={styles.modal}>
+            <View style={styles.center}>
+              <Text style={styles.title}>Choose Photo!</Text>
+            </View>
+            <Gap height={24} />
+            <View style={styles.photoContainer}>
+              <Button
+                text="Take photo"
+                fontFamily="Poppins-SemiBold"
+                fontSize={16}
+                onPress={takePhoto}
+              />
+              <Gap height={16} />
+              <Button
+                text="Choose from Gallery"
+                type="mirror"
+                fontFamily="Poppins-SemiBold"
+                fontSize={16}
+                color={colors.c1}
+                onPress={chooseFromLibrary}
+              />
+            </View>
+            <Gap height={24} />
           </View>
         )}
       </Modal>
@@ -520,6 +570,9 @@ const styles = StyleSheet.create({
   flexOne: {
     flex: 1,
   },
+  flexTwo: {
+    flex: 2,
+  },
   center: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -551,5 +604,34 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-SemiBold',
     fontSize: normalize(14),
     color: colors.c6,
+  },
+  leftSuccess: {
+    borderLeftColor: '#C7DAFF',
+  },
+  padding: {
+    paddingHorizontal: normalize(15),
+  },
+  textAlert: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: normalize(12),
+    color: colors.black,
+  },
+  alertError: {
+    width: '90%',
+    height: normalize(56),
+    flexDirection: 'row',
+    backgroundColor: '#FFE4E3',
+    alignItems: 'center',
+    paddingHorizontal: normalize(15),
+    borderRadius: normalize(10),
+  },
+  alertSuccess: {
+    width: '90%',
+    height: normalize(56),
+    flexDirection: 'row',
+    backgroundColor: '#C7DAFF',
+    alignItems: 'center',
+    paddingHorizontal: normalize(15),
+    borderRadius: normalize(10),
   },
 });

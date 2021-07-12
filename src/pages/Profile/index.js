@@ -12,7 +12,7 @@ import {
 import {Gap, ListProfile} from '../../components';
 import normalize from 'react-native-normalize';
 
-const Profile = () => {
+const Profile = ({navigation}) => {
   return (
     <View style={styles.page}>
       <Image source={BackgroundProfile} style={styles.background} />
@@ -26,11 +26,19 @@ const Profile = () => {
         <Text style={styles.phone}>082 123 456 789</Text>
       </View>
       <Gap height={33} />
-      <ListProfile text="Edit Profile" icon={<IcEdit />} />
+      <ListProfile
+        text="Edit Profile"
+        icon={<IcEdit />}
+        onPress={() => navigation.replace('EditProfile')}
+      />
       <ListProfile text="Ubah Password" icon={<IcLockDark />} />
       <ListProfile text="Kebijakan Privasi" icon={<IcPaper />} />
       <ListProfile text="Aturan Pengguna" icon={<IcPaper />} />
-      <ListProfile text="keluar" icon={<IcSignOut />} />
+      <ListProfile
+        text="Keluar"
+        icon={<IcSignOut />}
+        onPress={() => navigation.replace('SignIn')}
+      />
       <View style={styles.footer}>
         <Text style={styles.version}>Versi 1.0</Text>
       </View>
